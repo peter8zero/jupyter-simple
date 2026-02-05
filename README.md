@@ -1,104 +1,86 @@
-# UK Defined Benefit Pension Specification Templates
+# Executable Calculation Specifications
 
-Simple Jupyter notebook templates for documenting pension calculation specifications.
+Write calculation specs that actually run. Test your logic before handoff. No more ambiguous Word documents.
+
+## What Is This?
+
+Jupyter notebook templates for documenting calculations as **executable specifications**. Instead of writing formulas in Word that nobody can test, you write specs that run with real data and prove they work.
+
+Perfect for:
+- Pension benefit calculations
+- Financial calculations
+- Any business logic that needs clear documentation
+
+## Getting Started
+
+| Step | What to do |
+|------|------------|
+| 1 | Read **[QUICK_START.md](QUICK_START.md)** — install and run in 5 minutes |
+| 2 | Open **TEMPLATE_starter_spec.ipynb** — practice with the generic template |
+| 3 | Read **GUIDE_building_calc_specs.ipynb** — learn to build your own specs |
 
 ## What's Included
 
+### Documentation
+
 | File | Purpose |
 |------|---------|
-| `GUIDE_building_calc_specs.ipynb` | **Start here** — Tutorial on building specs + FAQ |
-| `TEMPLATE_starter_spec.ipynb` | Generic template for any calculation |
-| `active_to_retirement_spec.ipynb` | Pension: Active member retiring directly |
-| `active_to_deferred_spec.ipynb` | Pension: Active member leaving with deferred |
-| `deferred_retirement_spec.ipynb` | Pension: Deferred member taking pension |
-| `QUICK_START.md` | Setup guide and cheat sheets |
-| `_quarto.yml` | Quarto config for rendering to HTML/PDF/Word |
+| [QUICK_START.md](QUICK_START.md) | Install and run your first spec in 5 minutes |
+| GUIDE_building_calc_specs.ipynb | Complete tutorial + FAQ + cheat sheets |
+
+### Templates
+
+| Template | Use for |
+|----------|---------|
+| **TEMPLATE_starter_spec.ipynb** | Any calculation (start here for practice) |
+| active_to_retirement_spec.ipynb | Pension: active member retiring |
+| active_to_deferred_spec.ipynb | Pension: active member leaving early |
+| deferred_retirement_spec.ipynb | Pension: deferred member retiring |
+
+### Configuration
+
+| File | Purpose |
+|------|---------|
+| _quarto.yml | Rendering settings for PDF/HTML/Word output |
 
 ## Requirements
 
 - Python 3.8+
 - VS Code with Jupyter extension
-- Quarto (for rendering to PDF/HTML/Word)
+- Quarto (for PDF/HTML/Word export)
 
-```bash
-pip install jupyter
-```
+## 30-Second Install
 
-Install Quarto from: https://quarto.org/docs/get-started/
+1. Install [VS Code](https://code.visualstudio.com/), [Python](https://www.python.org/downloads/), and [Quarto](https://quarto.org/docs/get-started/)
+2. In VS Code, install the **Jupyter** and **Quarto** extensions
+3. Open any `.ipynb` file and click **Run All**
 
-For version control (optional):
-```bash
-pip install jupytext
-```
-
-## Quick Start
-
-1. Open `deferred_retirement_spec.ipynb` in VS Code
-2. Edit the input values in the first code cell
-3. Click **Run All** to see calculation results
-4. Render with Quarto when ready to share (see below)
+See [QUICK_START.md](QUICK_START.md) for detailed setup.
 
 ## How It Works
 
-Each notebook combines:
-- **Markdown cells** — Documentation and explanations
-- **Code cells** — Simple formulas that execute
-
-The code is just basic arithmetic:
-```python
-excess = pension - gmp
-revalued = excess * (1 + rate) ** years
+```
+┌─────────────────────────────────────────────────────────┐
+│  Markdown Cell                                          │
+│  "Step 1: Calculate the revalued pension"               │
+│  Formula: revalued = original × (1 + rate)^years        │
+└─────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────┐
+│  Code Cell                                              │
+│  revalued = original * (1 + rate) ** years              │
+│  print(f"Revalued pension: £{revalued:,.2f}")          │
+└─────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────┐
+│  Output                                                 │
+│  Revalued pension: £17,958.56                          │
+└─────────────────────────────────────────────────────────┘
 ```
 
-## Rendering with Quarto
+Documentation and calculation in one place. Change inputs, re-run, see results instantly.
 
-Render individual notebooks:
-```bash
-quarto render active_to_retirement_spec.ipynb          # HTML (default)
-quarto render active_to_retirement_spec.ipynb --to pdf
-quarto render active_to_retirement_spec.ipynb --to docx
-```
-
-Render all notebooks in the project:
-```bash
-quarto render
-```
-
-Output files go to the `_output/` folder. The `_quarto.yml` file configures:
-- Table of contents
-- Section numbering
-- Consistent styling across all specs
-- Code execution on render
-
-## Version Control with Jupytext
-
-To get clean Git diffs, pair notebooks with Python files:
-
-```bash
-jupytext --set-formats ipynb,py:percent deferred_retirement_spec.ipynb
-```
-
-Then commit only the `.py` files. See `QUICK_START.md` for details.
-
-## Choosing a Template
-
-| Use case | Start with |
-|----------|------------|
-| Learning / practice | `TEMPLATE_starter_spec.ipynb` |
-| Any non-pension calculation | `TEMPLATE_starter_spec.ipynb` |
-| Pension: active to retirement | `active_to_retirement_spec.ipynb` |
-| Pension: active to deferred | `active_to_deferred_spec.ipynb` |
-| Pension: deferred to retirement | `deferred_retirement_spec.ipynb` |
-
-## Pension Templates
-
-- [x] Active to retirement
-- [x] Active to deferred
-- [x] Deferred to retirement
-- [ ] Transfer values *(coming soon)*
-- [ ] Death benefits *(coming soon)*
-
-## Template Workflow
+## Pension Template Workflow
 
 ```
 Active Member
@@ -106,9 +88,34 @@ Active Member
     ├──► Retires directly ──► active_to_retirement_spec.ipynb
     │
     └──► Leaves early ──► active_to_deferred_spec.ipynb
-                                    │
-                                    ▼
-                          Deferred Member
-                                    │
-                                    └──► Retires ──► deferred_retirement_spec.ipynb
+                                │
+                                ▼
+                      Deferred Member
+                                │
+                                └──► Retires ──► deferred_retirement_spec.ipynb
 ```
+
+## Rendering Output
+
+Convert notebooks to shareable documents:
+
+```bash
+quarto render TEMPLATE_starter_spec.ipynb --to pdf    # PDF
+quarto render TEMPLATE_starter_spec.ipynb --to html   # HTML
+quarto render TEMPLATE_starter_spec.ipynb --to docx   # Word
+quarto render                                          # All notebooks
+```
+
+Or press `Ctrl+Shift+K` in VS Code.
+
+## Why This Approach?
+
+| Traditional Spec | Executable Spec |
+|------------------|-----------------|
+| Formulas are static text | Formulas actually run |
+| Test manually (or not at all) | Click Run All to test |
+| Bugs found in development | Bugs found while writing |
+| Ambiguous prose | Precise code |
+| Developer has questions | Logic is proven |
+
+See the FAQ section in the GUIDE for detailed answers to common concerns.
