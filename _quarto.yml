@@ -35,7 +35,6 @@ format:
     toc: true
     toc-depth: 3
     number-sections: true
-    reference-doc: default
 
 # Execute code when rendering
 execute:
