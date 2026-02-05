@@ -6,10 +6,12 @@ Simple Jupyter notebook templates for documenting pension calculation specificat
 
 | File | Purpose |
 |------|---------|
-| `active_to_retirement_spec.ipynb` | Active member retiring directly from service |
-| `active_to_deferred_spec.ipynb` | Active member leaving with a deferred pension |
-| `deferred_retirement_spec.ipynb` | Deferred member taking pension at retirement |
-| `QUICK_START.md` | How to use the templates (includes cheat sheets) |
+| `GUIDE_building_calc_specs.ipynb` | **Start here** — Tutorial on building specs + FAQ |
+| `TEMPLATE_starter_spec.ipynb` | Generic template for any calculation |
+| `active_to_retirement_spec.ipynb` | Pension: Active member retiring directly |
+| `active_to_deferred_spec.ipynb` | Pension: Active member leaving with deferred |
+| `deferred_retirement_spec.ipynb` | Pension: Deferred member taking pension |
+| `QUICK_START.md` | Setup guide and cheat sheets |
 | `_quarto.yml` | Quarto config for rendering to HTML/PDF/Word |
 
 ## Requirements
@@ -78,7 +80,17 @@ jupytext --set-formats ipynb,py:percent deferred_retirement_spec.ipynb
 
 Then commit only the `.py` files. See `QUICK_START.md` for details.
 
-## Templates
+## Choosing a Template
+
+| Use case | Start with |
+|----------|------------|
+| Learning / practice | `TEMPLATE_starter_spec.ipynb` |
+| Any non-pension calculation | `TEMPLATE_starter_spec.ipynb` |
+| Pension: active to retirement | `active_to_retirement_spec.ipynb` |
+| Pension: active to deferred | `active_to_deferred_spec.ipynb` |
+| Pension: deferred to retirement | `deferred_retirement_spec.ipynb` |
+
+## Pension Templates
 
 - [x] Active to retirement
 - [x] Active to deferred
