@@ -10,15 +10,19 @@ Simple Jupyter notebook templates for documenting pension calculation specificat
 | `active_to_deferred_spec.ipynb` | Active member leaving with a deferred pension |
 | `deferred_retirement_spec.ipynb` | Deferred member taking pension at retirement |
 | `QUICK_START.md` | How to use the templates (includes cheat sheets) |
+| `_quarto.yml` | Quarto config for rendering to HTML/PDF/Word |
 
 ## Requirements
 
 - Python 3.8+
 - VS Code with Jupyter extension
+- Quarto (for rendering to PDF/HTML/Word)
 
 ```bash
 pip install jupyter
 ```
+
+Install Quarto from: https://quarto.org/docs/get-started/
 
 For version control (optional):
 ```bash
@@ -30,7 +34,7 @@ pip install jupytext
 1. Open `deferred_retirement_spec.ipynb` in VS Code
 2. Edit the input values in the first code cell
 3. Click **Run All** to see calculation results
-4. Export to PDF/HTML when ready to share
+4. Render with Quarto when ready to share (see below)
 
 ## How It Works
 
@@ -43,6 +47,26 @@ The code is just basic arithmetic:
 excess = pension - gmp
 revalued = excess * (1 + rate) ** years
 ```
+
+## Rendering with Quarto
+
+Render individual notebooks:
+```bash
+quarto render active_to_retirement_spec.ipynb          # HTML (default)
+quarto render active_to_retirement_spec.ipynb --to pdf
+quarto render active_to_retirement_spec.ipynb --to docx
+```
+
+Render all notebooks in the project:
+```bash
+quarto render
+```
+
+Output files go to the `_output/` folder. The `_quarto.yml` file configures:
+- Table of contents
+- Section numbering
+- Consistent styling across all specs
+- Code execution on render
 
 ## Version Control with Jupytext
 

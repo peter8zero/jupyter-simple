@@ -10,7 +10,10 @@
 
 1. Install VS Code: https://code.visualstudio.com/
 2. Install Python: https://www.python.org/downloads/
-3. In VS Code, install the "Jupyter" extension (click Extensions icon, search "Jupyter")
+3. Install Quarto: https://quarto.org/docs/get-started/
+4. In VS Code, install these extensions (click Extensions icon):
+   - "Jupyter"
+   - "Quarto"
 
 ## Using the Template
 
@@ -70,8 +73,54 @@ Just with names instead of cell references.
 | Change to Markdown | `M` |
 | Change to Code | `Y` |
 
-## Exporting
+## Rendering with Quarto
 
+Quarto converts your notebooks to professional documents. Output goes to the `_output/` folder.
+
+### From the Command Line
+
+```bash
+# Render one notebook to HTML (default)
+quarto render active_to_retirement_spec.ipynb
+
+# Render to PDF
+quarto render active_to_retirement_spec.ipynb --to pdf
+
+# Render to Word
+quarto render active_to_retirement_spec.ipynb --to docx
+
+# Render ALL notebooks in the folder
+quarto render
+```
+
+### From VS Code
+
+With the Quarto extension installed:
+1. Open a notebook
+2. Press `Ctrl+Shift+K` (or `Cmd+Shift+K` on Mac)
+3. Select output format
+
+Or click the "Render" button in the top toolbar.
+
+### What the `_quarto.yml` File Does
+
+The project config file sets defaults for all specs:
+- **Table of contents** on every document
+- **Section numbering** (1, 1.1, 1.2, etc.)
+- **Consistent styling** across HTML, PDF, and Word
+- **Runs all code** when rendering (so outputs are always current)
+- **Embeds resources** in HTML (single file, easy to share)
+
+### PDF Requirements
+
+To render PDFs, you need LaTeX. Install with:
+```bash
+quarto install tinytex
+```
+
+## Legacy Export (without Quarto)
+
+If you prefer VS Code's built-in export:
 - **To PDF**: File → Export → PDF
 - **To HTML**: File → Export → HTML
 

@@ -1,0 +1,52 @@
+project:
+  title: "Pension Specification Templates"
+  type: default
+  output-dir: _output
+
+# Default format settings for all notebooks
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    toc-title: "Contents"
+    number-sections: true
+    code-fold: false
+    code-tools: false
+    embed-resources: true
+
+  pdf:
+    documentclass: article
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    colorlinks: true
+    geometry:
+      - margin=2.5cm
+    include-in-header:
+      text: |
+        \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        \fancyhead[L]{\leftmark}
+        \fancyhead[R]{DRAFT}
+        \fancyfoot[C]{\thepage}
+
+  docx:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    reference-doc: default
+
+# Execute code when rendering
+execute:
+  enabled: true
+  echo: true
+  warning: false
+
+# Default metadata for all documents
+author: "[Your Name]"
+date: today
+date-format: "D MMMM YYYY"
+
+# Language settings
+lang: en-GB
