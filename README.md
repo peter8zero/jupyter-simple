@@ -6,8 +6,10 @@ Simple Jupyter notebook templates for documenting pension calculation specificat
 
 | File | Purpose |
 |------|---------|
-| `deferred_retirement_spec.ipynb` | Deferred to retirement calculation spec |
-| `QUICK_START.md` | How to use the templates |
+| `active_to_retirement_spec.ipynb` | Active member retiring directly from service |
+| `active_to_deferred_spec.ipynb` | Active member leaving with a deferred pension |
+| `deferred_retirement_spec.ipynb` | Deferred member taking pension at retirement |
+| `QUICK_START.md` | How to use the templates (includes cheat sheets) |
 
 ## Requirements
 
@@ -54,7 +56,23 @@ Then commit only the `.py` files. See `QUICK_START.md` for details.
 
 ## Templates
 
+- [x] Active to retirement
+- [x] Active to deferred
 - [x] Deferred to retirement
-- [ ] Active to retirement *(coming soon)*
 - [ ] Transfer values *(coming soon)*
 - [ ] Death benefits *(coming soon)*
+
+## Template Workflow
+
+```
+Active Member
+    │
+    ├──► Retires directly ──► active_to_retirement_spec.ipynb
+    │
+    └──► Leaves early ──► active_to_deferred_spec.ipynb
+                                    │
+                                    ▼
+                          Deferred Member
+                                    │
+                                    └──► Retires ──► deferred_retirement_spec.ipynb
+```
